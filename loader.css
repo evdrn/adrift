@@ -1,0 +1,336 @@
+/* Base loading interface */
+.loading-interface {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #000;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.intro-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #000;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+}
+
+.intro-screen.active {
+    display: flex;
+}
+
+.intro-text {
+    color: #00ff00;
+    font-family: 'Inconsolata', monospace;
+    font-size: 2rem;
+    padding: 20px;
+}
+
+.cursor {
+    animation: blink 1s infinite;
+    color: #00ff00;
+}
+
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}
+
+.loading-interface.active {
+    display: flex;
+}
+
+/* Background video container */
+.bg-video-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    overflow: hidden;
+}
+
+#bg-video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Selection panels */
+.selection-panel {
+    background: rgba(0, 0, 0, 0.9);
+    padding: 2.5rem;
+    border-radius: 10px;
+    border: 1px solid #00ff00;
+    display: none;
+    text-align: center;
+    max-width: 1000px;
+    width: 90%;
+    margin: 20px auto; /* Center horizontally */
+    max-height: 90vh; /* Prevent overflow */
+    overflow-y: auto; /* Enable vertical scrolling */
+    overflow-x: hidden; /* Prevent horizontal scrolling */
+}
+
+.selection-panel.active {
+    display: block;
+}
+
+.selection-panel h2 {
+    color: #00ff00;
+    margin-bottom: 2rem;
+    font-family: 'Inconsolata', monospace;
+    font-size: 1.8rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+/* None option styling */
+.option-none {
+    background: rgba(40, 40, 40, 0.9);
+    border: 2px solid #666;
+    padding: 1rem;
+    margin-bottom: 2rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border-radius: 5px;
+}
+
+.option-none:hover {
+    background: rgba(60, 60, 60, 0.9);
+    transform: translateY(-2px);
+}
+
+.option-none.selected {
+    background: rgba(80, 80, 80, 0.9);
+    border-color: #888;
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
+}
+
+.option-none .option-name {
+    color: #888;
+    font-size: 1.2rem;
+}
+
+/* Options grid */
+.options-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.option {
+    background: rgba(0, 255, 0, 0.1);
+    border: 1px solid #00ff00;
+    padding: 1.5rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    height: 120px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.option:hover {
+    background: rgba(0, 255, 0, 0.2);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 255, 0, 0.1);
+}
+
+.option.selected {
+    background: rgba(0, 255, 0, 0.3);
+    transform: translateY(-2px);
+    box-shadow: 0 0 20px rgba(0, 255, 0, 0.2);
+}
+
+.option-name {
+    color: #00ff00;
+    font-family: 'Inconsolata', monospace;
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    position: relative;
+    z-index: 2;
+}
+
+/* Preview button */
+.preview-btn {
+    color: #00ff00;
+    border: 1px solid #00ff00;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    font-size: 0.8rem;
+    border-radius: 3px;
+    transition: all 0.2s ease;
+    position: relative;
+    z-index: 2;
+}
+
+.preview-btn:hover {
+    background: rgba(0, 255, 0, 0.2);
+}
+
+/* Video previews */
+.preview-video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0.3;
+    transition: opacity 0.3s ease;
+}
+
+.option:hover .preview-video {
+    opacity: 0.5;
+}
+
+/* Confirm button */
+.confirm-btn {
+    background: transparent;
+    border: 2px solid #00ff00;
+    color: #00ff00;
+    padding: 1rem 2.5rem;
+    font-family: 'Inconsolata', monospace;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border-radius: 5px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.confirm-btn:hover {
+    background: rgba(0, 255, 0, 0.2);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 255, 0, 0.1);
+}
+
+/* Loading animation */
+.loading-animation {
+    display: none;
+    text-align: center;
+    padding: 2rem;
+}
+
+.loading-animation.active {
+    display: block;
+}
+
+.loading-text {
+    color: #00ff00;
+    font-family: 'Inconsolata', monospace;
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.progress-bar {
+    width: 300px;
+    height: 4px;
+    background: rgba(0, 255, 0, 0.2);
+    border-radius: 2px;
+    overflow: hidden;
+    margin: 0 auto;
+}
+
+.progress {
+    width: 0%;
+    height: 100%;
+    background: #00ff00;
+    transition: width 0.3s ease;
+}
+
+/* Audio controls */
+.audio-controls {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: rgba(0, 0, 0, 0.8);
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #00ff00;
+    z-index: 1001;
+}
+
+.icon-btn {
+    background: transparent;
+    border: 1px solid #00ff00;
+    color: #00ff00;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 3px;
+    transition: all 0.2s ease;
+}
+
+.icon-btn:hover {
+    background: rgba(0, 255, 0, 0.2);
+}
+
+#volume-slider {
+    width: 100px;
+    accent-color: #00ff00;
+}
+
+/* Utility classes */
+.hidden {
+    display: none !important;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .options-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .selection-panel {
+        padding: 1.5rem;
+    }
+
+    .option {
+        height: 100px;
+    }
+
+    .option-name {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .options-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .selection-panel h2 {
+        font-size: 1.4rem;
+    }
+
+    .confirm-btn {
+        padding: 0.8rem 1.5rem;
+        font-size: 1rem;
+    }
+}

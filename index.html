@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- MP3 Placeholder -->
+    <audio id="background-mp3" autoplay loop hidden></audio>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adrift Terminal</title>
+    <link rel="icon" href="favicon.png" type="image/png">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="loader.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@300&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Intro Screen -->
+    <div id="intro-screen" class="intro-screen active">
+        <div class="intro-text">
+            <span id="typed-text"></span>
+            <span class="cursor">|</span>
+        </div>
+    </div>
+
+    <!-- Loading Interface -->
+    <div id="loading-interface" class="loading-interface">
+        <!-- Background video container -->
+        <div id="bg-video-container" class="bg-video-container">
+            <video id="bg-video" loop muted></video>
+        </div>
+
+        <!-- Audio Selection -->
+        <div id="audio-selection" class="selection-panel active">
+            <h2>SELECT BACKGROUND MUSIC</h2>
+            <div class="option-none" data-track="none">
+                <span class="option-name">No Music</span>
+            </div>
+            <div class="options-grid">
+                <div class="option" data-track="pokewander">
+                    <span class="option-name">PokeWander</span>
+                    <audio src="audio/pokewander.mp3" preload="metadata"></audio>
+                    <div class="preview-btn">Preview</div>
+                </div>
+                <div class="option" data-track="lofi">
+                    <span class="option-name">Lofi</span>
+                    <audio src="audio/lofi.mp3" preload="metadata"></audio>
+                    <div class="preview-btn">Preview</div>
+                </div>
+                <div class="option" data-track="trance">
+                    <span class="option-name">Trance</span>
+                    <audio src="audio/trance.mp3" preload="metadata"></audio>
+                    <div class="preview-btn">Preview</div>
+                </div>
+                <div class="option" data-track="emo">
+                    <span class="option-name">Emo</span>
+                    <audio src="audio/emo.mp3" preload="metadata"></audio>
+                    <div class="preview-btn">Preview</div>
+                </div>
+                <div class="option" data-track="battle">
+                    <span class="option-name">Battle</span>
+                    <audio src="audio/battle.mp3" preload="metadata"></audio>
+                    <div class="preview-btn">Preview</div>
+                </div>
+                <div class="option" data-track="battle-recorder">
+                    <span class="option-name">Battle (Recorder)</span>
+                    <audio src="audio/battle_recorder.mp3" preload="metadata"></audio>
+                    <div class="preview-btn">Preview</div>
+                </div>
+            </div>
+            <button id="confirm-audio" class="confirm-btn">CONFIRM SELECTION</button>
+        </div>
+
+        <!-- Video Selection -->
+        <div id="video-selection" class="selection-panel">
+            <h2>SELECT BACKGROUND VISUAL</h2>
+            <div class="option-none" data-video="none">
+                <span class="option-name">No Background</span>
+            </div>
+            <div class="options-grid">
+                <div class="option" data-video="cyberpunk">
+                    <span class="option-name">Cyberpunk</span>
+                    <video src="videos/cyberpunky.mp4" muted loop class="preview-video"></video>
+                </div>
+                <div class="option" data-video="drive">
+                    <span class="option-name">Drive</span>
+                    <video src="videos/drive.mp4" muted loop class="preview-video"></video>
+                </div>
+                <div class="option" data-video="flowers">
+                    <span class="option-name">Flowers</span>
+                    <video src="videos/flowers.mp4" muted loop class="preview-video"></video>
+                </div>
+                <div class="option" data-video="fog">
+                    <span class="option-name">Fog</span>
+                    <video src="videos/fog.mp4" muted loop class="preview-video"></video>
+                </div>
+                <div class="option" data-video="space">
+                    <span class="option-name">Space</span>
+                    <video src="videos/space.mp4" muted loop class="preview-video"></video>
+                </div>
+                <div class="option" data-video="spaceship">
+                    <span class="option-name">Spaceship</span>
+                    <video src="videos/spaceship.mp4" muted loop class="preview-video"></video>
+                </div>
+            </div>
+            <button id="confirm-video" class="confirm-btn">CONFIRM SELECTION</button>
+        </div>
+
+        <!-- Loading Animation -->
+        <div id="loading-animation" class="loading-animation">
+            <div class="loading-text">INITIALIZING TERMINAL</div>
+            <div class="progress-bar">
+                <div class="progress"></div>
+            </div>
+        </div>
+    </div>
+
+        <div class="social-bar">
+        <a href="https://x.com/" class="social-icon" id="Twitter">
+          <img src="twitter.png" alt="Twitter">
+        </a>
+        <a href="https://dexscreener.com" class="social-icon">
+            <img src="dex.png" alt="Pumpfun">
+          </a>
+        <a href="https://pump.fun/coin/" class="social-icon">
+          <img src="pumpfun.png" alt="Pumpfun">
+        </a>
+      </div>      
+
+    <!-- Terminal Interface -->
+    <div id="terminal-container" class="terminal-container hidden">
+        <div class="terminal">
+            <div class="terminal-content">
+                <div id="output" class="output"></div>
+                <div class="input-line">
+                    <span class="prompt">></span>
+                    <input id="input" type="text" autofocus autocomplete="off" spellcheck="false">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Audio Controls -->
+    <div id="audio-controls" class="audio-controls hidden">
+        <button id="toggle-audio" class="icon-btn">🔊</button>
+        <input type="range" id="volume-slider" min="0" max="100" value="50">
+    </div>
+    <p class="centered-text">CA:</p>
+    <script type="module" src="loader.js"></script>
+    <script type="module" src="app.js"></script>
+</body>
+</html>
